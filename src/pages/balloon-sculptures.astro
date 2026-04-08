@@ -1,11 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
-
-import musicalNote from '../assets/images/musical-note-sculpture.jpg';
-import iceCreamSculptures from '../assets/images/ice-cream-soda-sculptures.jpg';
-import aisdLetters from '../assets/images/aisd-balloon-letters.jpg';
-import oscarSculpture from '../assets/images/oscar-sculpture.jpg';
+const musicalNote = '/assets/musical-note-sculpture.jpg';
+const iceCreamSculptures = '/assets/ice-cream-soda-sculptures.jpg';
+const aisdLetters = '/assets/aisd-balloon-letters.jpg';
+const oscarSculpture = '/assets/oscar-sculpture.jpg';
 
 const sculptureTypes = [
   {
@@ -71,7 +69,7 @@ const faqs = [
   <!-- Page Hero -->
   <section class="page-hero">
     <div class="page-hero-bg">
-      <Image src={musicalNote} alt="Balloon Sculptures" width={1400} quality="mid" />
+      <img src={musicalNote} alt="Balloon Sculptures" />
       <div class="page-hero-overlay"></div>
     </div>
     <div class="container page-hero-content">
@@ -114,11 +112,8 @@ const faqs = [
         {gallery.map((item, index) => (
           <div class={`gallery-card reveal reveal-delay-${(index % 4) + 1}`}>
             <div class="gallery-card-img">
-              <Image
-                src={item.image}
+              <img                 src={item.image}
                 alt={item.caption}
-                width={500}
-                quality="mid"
                 data-lightbox={item.image.src}
                 data-caption={item.caption}
               />

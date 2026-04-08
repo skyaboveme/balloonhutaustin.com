@@ -1,12 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
-
-import columnsAquaSilver from '../assets/images/columns-aqua-silver.jpg';
-import columnsHouseDivided from '../assets/images/columns-house-divided.jpg';
-import columnsFlower from '../assets/images/columns-flower.jpg';
-import columnsMinions from '../assets/images/columns-minions.jpg';
-import columnsBentPurple from '../assets/images/columns-bent-purple.jpg';
+const columnsAquaSilver = '/assets/columns-aqua-silver.jpg';
+const columnsHouseDivided = '/assets/columns-house-divided.jpg';
+const columnsFlower = '/assets/columns-flower.jpg';
+const columnsMinions = '/assets/columns-minions.jpg';
+const columnsBentPurple = '/assets/columns-bent-purple.jpg';
 
 const columnTypes = [
   {
@@ -48,7 +46,7 @@ const gallery = [
   <!-- Page Hero -->
   <section class="page-hero">
     <div class="page-hero-bg">
-      <Image src={columnsFlower} alt="Balloon Columns" width={1400} quality="mid" />
+      <img src={columnsFlower} alt="Balloon Columns" />
       <div class="page-hero-overlay"></div>
     </div>
     <div class="container page-hero-content">
@@ -91,11 +89,9 @@ const gallery = [
         {gallery.map((item, index) => (
           <div class={`gallery-card reveal reveal-delay-${(index % 4) + 1}`}>
             <div class="gallery-card-img">
-              <Image 
+              <img 
                 src={item.image} 
-                alt={item.caption} 
-                width={500} 
-                quality="mid"
+                alt={item.caption}
                 data-lightbox={item.image.src}
                 data-caption={item.caption}
               />

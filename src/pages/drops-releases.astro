@@ -1,11 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
-
-import eventDecor1 from '../assets/images/event-decor-1.jpg';
-import eventDecor2 from '../assets/images/event-decor-2.jpg';
-import eventDecor3 from '../assets/images/event-decor-3.jpg';
-import eventDecor5 from '../assets/images/event-decor-5.jpg';
+const eventDecor1 = '/assets/event-decor-1.jpg';
+const eventDecor2 = '/assets/event-decor-2.jpg';
+const eventDecor3 = '/assets/event-decor-3.jpg';
+const eventDecor5 = '/assets/event-decor-5.jpg';
 
 const dropTypes = [
   {
@@ -89,7 +87,7 @@ const gallery = [
   <!-- Page Hero -->
   <section class="page-hero">
     <div class="page-hero-bg">
-      <Image src={eventDecor2} alt="Balloon Drops and Releases" width={1400} quality="mid" />
+      <img src={eventDecor2} alt="Balloon Drops and Releases" />
       <div class="page-hero-overlay"></div>
     </div>
     <div class="container page-hero-content">
@@ -154,11 +152,8 @@ const gallery = [
         {gallery.map((item, index) => (
           <div class={`gallery-card reveal reveal-delay-${(index % 4) + 1}`}>
             <div class="gallery-card-img">
-              <Image
-                src={item.image}
+              <img                 src={item.image}
                 alt={item.caption}
-                width={500}
-                quality="mid"
                 data-lightbox={item.image.src}
                 data-caption={item.caption}
               />

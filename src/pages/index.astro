@@ -1,21 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
-
 // Hero & Gallery images
-import bridalShower from '../assets/images/bridal-shower-pink-arch.jpg';
-import peachRose from '../assets/images/peach-rose-arch.jpg';
-import musicalNote from '../assets/images/musical-note-sculpture.jpg';
-import butterfliesArch from '../assets/images/butterflies-flowers-arch.jpg';
-import iceCreamSculptures from '../assets/images/ice-cream-soda-sculptures.jpg';
-import aisdLetters from '../assets/images/aisd-balloon-letters.jpg';
-import mutedPurples from '../assets/images/muted-purples-arch.jpg';
-import eventDecor1 from '../assets/images/event-decor-1.jpg';
-import eventDecor2 from '../assets/images/event-decor-2.jpg';
-import archRainbow from '../assets/images/arch-rainbow.jpg';
-import archPrettyPink from '../assets/images/arch-pretty-pink.jpg';
-import columnsFlower from '../assets/images/columns-flower.jpg';
-import columnsBentPurple from '../assets/images/columns-bent-purple.jpg';
+const bridalShower = '/assets/bridal-shower-pink-arch.jpg';
+const peachRose = '/assets/peach-rose-arch.jpg';
+const musicalNote = '/assets/musical-note-sculpture.jpg';
+const butterfliesArch = '/assets/butterflies-flowers-arch.jpg';
+const iceCreamSculptures = '/assets/ice-cream-soda-sculptures.jpg';
+const aisdLetters = '/assets/aisd-balloon-letters.jpg';
+const mutedPurples = '/assets/muted-purples-arch.jpg';
+const eventDecor1 = '/assets/event-decor-1.jpg';
+const eventDecor2 = '/assets/event-decor-2.jpg';
+const archRainbow = '/assets/arch-rainbow.jpg';
+const archPrettyPink = '/assets/arch-pretty-pink.jpg';
+const columnsFlower = '/assets/columns-flower.jpg';
+const columnsBentPurple = '/assets/columns-bent-purple.jpg';
 
 const services = [
   {
@@ -120,13 +118,13 @@ const galleryItems = [
     <!-- Decorative gallery preview -->
     <div class="hero-gallery-preview" aria-hidden="true">
       <div class="hero-preview-card hero-preview-1">
-        <Image src={bridalShower} alt="Bridal Shower Balloon Arch" width={300} quality="mid" />
+        <img src={bridalShower} alt="Bridal Shower Balloon Arch" />
       </div>
       <div class="hero-preview-card hero-preview-2">
-        <Image src={musicalNote} alt="Musical Note Sculpture" width={250} quality="mid" />
+        <img src={musicalNote} alt="Musical Note Sculpture" />
       </div>
       <div class="hero-preview-card hero-preview-3">
-        <Image src={mutedPurples} alt="Muted Purple Arch" width={280} quality="mid" />
+        <img src={mutedPurples} alt="Muted Purple Arch" />
       </div>
     </div>
   </section>
@@ -144,7 +142,7 @@ const galleryItems = [
         {services.map((service, index) => (
           <a href={service.href} class={`service-card card reveal reveal-delay-${index + 1}`}>
             <div class="service-card-image">
-              <Image src={service.image} alt={service.title} width={400} quality="mid" />
+              <img src={service.image} alt={service.title} />
               <div class="service-card-overlay">
                 <span class="service-emoji">{service.emoji}</span>
               </div>
@@ -194,11 +192,9 @@ const galleryItems = [
       <div class="gallery-masonry">
         {galleryItems.map((item, index) => (
           <div class={`gallery-item reveal reveal-delay-${(index % 4) + 1}`}>
-            <Image 
+            <img 
               src={item.image} 
-              alt={item.caption} 
-              width={600} 
-              quality="mid"
+              alt={item.caption}
               data-lightbox={item.image.src}
               data-caption={item.caption}
             />
