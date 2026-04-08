@@ -127,6 +127,31 @@ const galleryItems = [
         <img src={mutedPurples} alt="Muted Purple Arch" />
       </div>
     </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUSTED VENUES ============ -->
+  <section class="trusted-venues">
+    <div class="container text-center">
+      <p class="venues-eyebrow">AUSTIN'S PREFERRED BALLOON VENDOR FOR</p>
+      <div class="venues-ticker-wrap">
+        <div class="venues-ticker">
+          <div class="venue-item">The Driskill</div>
+          <div class="venue-item">University of Texas</div>
+          <div class="venue-item">Palmer Events Center</div>
+          <div class="venue-item">Austin Country Club</div>
+          <div class="venue-item">The Oasis on Lake Travis</div>
+          <div class="venue-item">W Hotel Austin</div>
+          <!-- Duplicate for seamless scroll -->
+          <div class="venue-item" aria-hidden="true">The Driskill</div>
+          <div class="venue-item" aria-hidden="true">University of Texas</div>
+          <div class="venue-item" aria-hidden="true">Palmer Events Center</div>
+          <div class="venue-item" aria-hidden="true">Austin Country Club</div>
+          <div class="venue-item" aria-hidden="true">The Oasis on Lake Travis</div>
+          <div class="venue-item" aria-hidden="true">W Hotel Austin</div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ============ SERVICES ============ -->
@@ -195,7 +220,7 @@ const galleryItems = [
             <img 
               src={item.image} 
               alt={item.caption}
-              data-lightbox={item.image.src}
+              data-lightbox={item.image}
               data-caption={item.caption}
             />
             <div class="gallery-item-overlay">
@@ -835,9 +860,64 @@ const galleryItems = [
       align-items: center;
     }
     
-    .hero-ctas {
+    .hot-ctas {
       flex-direction: column;
       align-items: center;
     }
+  }
+
+  /* ========== TRUSTED VENUES ========== */
+  .trusted-venues {
+    padding: var(--spacing-md) 0;
+    background: var(--color-white);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .venues-eyebrow {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .venues-ticker-wrap {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+    /* Fade edges */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+  
+  .venues-ticker {
+    display: inline-flex;
+    animation: scrollTicker 30s linear infinite;
+  }
+  
+  .venues-ticker:hover {
+    animation-play-state: paused;
+  }
+  
+  .venue-item {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text);
+    padding: 0 2rem;
+    opacity: 0.6;
+    transition: opacity var(--transition-fast);
+  }
+  
+  .venue-item:hover {
+    opacity: 1;
+    color: var(--color-primary);
+  }
+  
+  @keyframes scrollTicker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 </style>

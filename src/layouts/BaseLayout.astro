@@ -78,9 +78,9 @@ const navLinks = [
   { href: '/balloon-columns/', label: 'Columns' },
   { href: '/balloon-sculptures/', label: 'Sculptures' },
   { href: '/bouquets-towers/', label: 'Bouquets' },
-  { href: '/balloon-tunnels-walls/', label: 'Tunnels' },
   { href: '/drops-releases/', label: 'Drops' },
   { href: '/event-decor/', label: 'Event Decor' },
+  { href: '/size-color-guide/', label: 'Color Guide' },
   { href: '/contact/', label: 'Contact' },
 ];
 ---
@@ -210,6 +210,7 @@ const navLinks = [
             <li><a href="/balloon-tunnels-walls/">Tunnels & Walls</a></li>
             <li><a href="/drops-releases/">Drops & Releases</a></li>
             <li><a href="/event-decor/">Event Decor</a></li>
+            <li><a href="/size-color-guide/">Size & Color Guide</a></li>
           </ul>
         </div>
         
@@ -240,11 +241,17 @@ const navLinks = [
     </div>
   </footer>
 
-  <!-- Mobile Floating CTA -->
-  <a href="tel:5127857253" class="floating-cta" id="floating-cta" aria-label="Call Balloon Hut Austin">
-    <span class="floating-cta-icon">📞</span>
-    <span class="floating-cta-text">Call Now</span>
-  </a>
+  <!-- Mobile Action Bar -->
+  <div class="mobile-action-bar" id="mobile-action-bar">
+    <a href="tel:5127857253" class="action-btn action-call" aria-label="Call Balloon Hut Austin">
+      <span class="action-icon">📞</span>
+      <span class="action-text">Call Now</span>
+    </a>
+    <a href="/contact/" class="action-btn action-quote" aria-label="Get a Free Quote">
+      <span class="action-icon">📋</span>
+      <span class="action-text">Get a Quote</span>
+    </a>
+  </div>
 
   <!-- Lightbox -->
   <div class="lightbox-overlay" id="lightbox">
@@ -295,9 +302,9 @@ const navLinks = [
         header?.classList.toggle('scrolled', currentScroll > 80);
         
         // Show/hide floating CTA
-        const floatingCta = document.getElementById('floating-cta');
+        const floatingCta = document.getElementById('mobile-action-bar');
         if (floatingCta) {
-          floatingCta.classList.toggle('visible', currentScroll > 400);
+          floatingCta.classList.toggle('visible', currentScroll > 150);
         }
         lastScroll = currentScroll;
       });
@@ -696,39 +703,49 @@ const navLinks = [
     color: var(--color-accent);
   }
   
-  /* ========== FLOATING CTA ========== */
-  .floating-cta {
+  /* ========== MOBILE ACTION BAR ========== */
+  .mobile-action-bar {
     position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+    background: var(--color-dark);
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.15);
+    z-index: 1000;
+    transform: translateY(100%);
+    transition: transform var(--transition-smooth);
+    padding-bottom: env(safe-area-inset-bottom, 0); /* For notched phones */
+  }
+  
+  .mobile-action-bar.visible {
+    transform: translateY(0);
+  }
+  
+  .action-btn {
+    flex: 1;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.9rem 1.5rem;
-    background: var(--gradient-warm);
-    color: var(--color-white);
-    border-radius: var(--radius-full);
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 1rem 0;
     font-family: var(--font-heading);
     font-weight: 600;
-    font-size: 1rem;
-    box-shadow: var(--shadow-lg);
-    z-index: 900;
-    transform: translateY(100px);
-    opacity: 0;
-    transition: all var(--transition-smooth);
-    animation: pulse-glow 2s ease-in-out infinite;
+    font-size: 1.05rem;
+    text-decoration: none;
   }
   
-  .floating-cta.visible {
-    transform: translateY(0);
-    opacity: 1;
+  .action-call {
+    background: var(--color-white);
+    color: var(--color-primary);
   }
   
-  .floating-cta:hover {
-    transform: translateY(-3px) scale(1.05);
+  .action-quote {
+    background: var(--gradient-warm);
+    color: var(--color-white);
   }
   
-  .floating-cta-icon {
+  .action-icon {
     font-size: 1.2rem;
   }
   
