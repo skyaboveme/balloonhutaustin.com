@@ -1,0 +1,393 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact Balloon Hut Austin | Get a Free Quote"
+  description="Contact Balloon Hut Austin for custom balloon decor. Call 512-785-7253 or email BalloonHutAustin@Gmail.com for a free quote. Serving Austin & Central Texas."
+  keywords="contact balloon hut Austin, balloon quote Austin, balloon delivery Austin TX, custom balloon order, party balloon Austin"
+>
+  <!-- Page Hero -->
+  <section class="contact-hero">
+    <div class="contact-hero-shapes" aria-hidden="true">
+      <div class="cshape cshape-1"></div>
+      <div class="cshape cshape-2"></div>
+      <div class="cshape cshape-3"></div>
+    </div>
+    <div class="container contact-hero-content">
+      <span class="contact-eyebrow">📋 Let's Plan Your Event</span>
+      <h1>Get In <span class="text-gradient-warm">Touch</span></h1>
+      <p>Tell us about your event and we'll create the perfect balloon experience</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Form -->
+        <div class="contact-form-wrap reveal">
+          <h2>Request a Free Quote</h2>
+          <p>Fill out the form below and we'll get back to you with pricing and ideas for your event!</p>
+          
+          <form 
+            action="https://formsubmit.co/BalloonHutAustin@Gmail.com" 
+            method="POST"
+            class="contact-form"
+            id="contact-form"
+          >
+            <!-- FormSubmit Config -->
+            <input type="hidden" name="_subject" value="New Quote Request from BalloonHut Website" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style="display:none" />
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name *</label>
+                <input type="text" id="name" name="name" required placeholder="Jane Doe" />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required placeholder="(512) 000-0000" />
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com" />
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="event-type">Event Type</label>
+                <select id="event-type" name="event_type">
+                  <option value="">Select your event...</option>
+                  <option value="wedding">Wedding</option>
+                  <option value="birthday">Birthday Party</option>
+                  <option value="corporate">Corporate Event</option>
+                  <option value="baby-shower">Baby Shower</option>
+                  <option value="bridal-shower">Bridal Shower</option>
+                  <option value="graduation">Graduation</option>
+                  <option value="quinceañera">Quinceañera</option>
+                  <option value="holiday">Holiday Party</option>
+                  <option value="school">School Event</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="event-date">Event Date</label>
+                <input type="date" id="event-date" name="event_date" />
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="services">Services Interested In</label>
+              <div class="checkbox-grid">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="services" value="Balloon Arches" />
+                  <span>🌈 Balloon Arches</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="services" value="Balloon Columns" />
+                  <span>🏛️ Balloon Columns</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="services" value="Balloon Sculptures" />
+                  <span>🎨 Sculptures</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="services" value="Bouquets" />
+                  <span>💐 Bouquets</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="services" value="Tunnels/Walls" />
+                  <span>🚇 Tunnels / Walls</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="services" value="Drops/Releases" />
+                  <span>🎊 Drops / Releases</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="services" value="Balloon Letters" />
+                  <span>🔤 Balloon Letters</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="services" value="Full Event Decor" />
+                  <span>🎉 Full Event Decor</span>
+                </label>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Tell Us About Your Vision *</label>
+              <textarea id="message" name="message" rows="4" required placeholder="Describe your event, color scheme, theme, and any special requests..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-large form-submit">
+              🎈 Send My Quote Request
+            </button>
+          </form>
+        </div>
+        
+        <!-- Contact Info -->
+        <div class="contact-info reveal reveal-delay-2">
+          <div class="info-card">
+            <h3>📞 Call Us</h3>
+            <a href="tel:5127857253" class="info-phone">512-785-7253</a>
+            <p>Reach us directly for quick questions and availability</p>
+          </div>
+          
+          <div class="info-card">
+            <h3>✉️ Email Us</h3>
+            <a href="mailto:BalloonHutAustin@Gmail.com" class="info-email">BalloonHutAustin@Gmail.com</a>
+            <p>Send photos, ideas, and details — we respond fast!</p>
+          </div>
+          
+          <div class="info-card">
+            <h3>📍 Service Area</h3>
+            <p class="info-area">Austin & Central Texas</p>
+            <p>We deliver, set up, and style at your venue across the greater Austin metro area.</p>
+          </div>
+
+          <div class="info-card info-card-highlight">
+            <h3>💡 Pro Tips</h3>
+            <ul class="tips-list">
+              <li>Book 2-3 weeks in advance for best availability</li>
+              <li>Send us photos of your venue and color swatches for accurate quotes</li>
+              <li>We handle delivery, setup, and takedown!</li>
+              <li>Indoor and outdoor events welcome</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Contact Hero */
+  .contact-hero {
+    position: relative;
+    min-height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-dark);
+    overflow: hidden;
+    padding-top: 5rem;
+  }
+  
+  .contact-hero-shapes { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .cshape { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3; }
+  .cshape-1 { width: 400px; height: 400px; background: var(--color-primary); top: -20%; right: -10%; animation: floatSlow 8s ease-in-out infinite; }
+  .cshape-2 { width: 300px; height: 300px; background: var(--color-pop-purple); bottom: -20%; left: 0; animation: floatSlow 10s ease-in-out 3s infinite; }
+  .cshape-3 { width: 200px; height: 200px; background: var(--color-accent); top: 30%; left: 40%; animation: floatSlow 12s ease-in-out 1s infinite; }
+  
+  .contact-hero-content { position: relative; z-index: 1; text-align: center; }
+  .contact-eyebrow { display: inline-block; font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--color-accent); margin-bottom: var(--spacing-sm); }
+  .contact-hero-content h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); color: var(--color-white); margin-bottom: var(--spacing-xs); }
+  .contact-hero-content p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.8); max-width: 500px; margin: 0 auto; }
+  
+  /* Contact Grid */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+  
+  .contact-form-wrap h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-form-wrap > p {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  /* Form */
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+  }
+  
+  .form-group {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .form-group label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--color-text);
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 2px solid rgba(108, 92, 231, 0.15);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text);
+    background: var(--color-white);
+    transition: all var(--transition-fast);
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(255, 107, 157, 0.15);
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid rgba(108, 92, 231, 0.1);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: 0.9rem;
+  }
+  
+  .checkbox-label:hover {
+    border-color: var(--color-primary);
+    background: rgba(255, 107, 157, 0.05);
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    width: auto;
+    accent-color: var(--color-primary);
+  }
+  
+  .form-submit {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+  
+  /* Info Cards */
+  .info-card {
+    background: var(--gradient-card);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(255, 107, 157, 0.1);
+    transition: all var(--transition-smooth);
+  }
+  
+  .info-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: rgba(255, 107, 157, 0.25);
+    transform: translateY(-2px);
+  }
+  
+  .info-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .info-phone {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 0.25rem;
+    transition: color var(--transition-fast);
+  }
+  
+  .info-phone:hover { color: var(--color-secondary); }
+  
+  .info-email {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-pop-purple);
+    display: block;
+    margin-bottom: 0.25rem;
+    word-break: break-all;
+    transition: color var(--transition-fast);
+  }
+  
+  .info-email:hover { color: var(--color-primary); }
+  
+  .info-area {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-pop-purple);
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .info-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+  }
+  
+  .info-card-highlight {
+    background: var(--gradient-dark);
+    border-color: var(--color-pop-purple);
+  }
+  
+  .info-card-highlight h3 {
+    color: var(--color-accent);
+  }
+  
+  .tips-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .tips-list li {
+    padding: 0.4rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+  }
+  
+  .tips-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-mint);
+    font-weight: 700;
+  }
+  
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    
+    .checkbox-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

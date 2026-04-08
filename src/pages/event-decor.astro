@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+import eventDecor1 from '../assets/images/event-decor-1.jpg';
+import eventDecor2 from '../assets/images/event-decor-2.jpg';
+import eventDecor3 from '../assets/images/event-decor-3.jpg';
+import eventDecor4 from '../assets/images/event-decor-4.jpg';
+import eventDecor5 from '../assets/images/event-decor-5.jpg';
+import eventDecor6 from '../assets/images/event-decor-6.jpg';
+import musicalNote from '../assets/images/musical-note-sculpture.jpg';
+import iceCreamSculptures from '../assets/images/ice-cream-soda-sculptures.jpg';
+import aisdLetters from '../assets/images/aisd-balloon-letters.jpg';
+
+const decorServices = [
+  {
+    name: 'Balloon Bouquets',
+    description: 'Beautiful helium bouquets in your event colors. Great for centerpieces, gifts, and table decorations.',
+    emoji: '💐',
+  },
+  {
+    name: 'Balloon Sculptures',
+    description: 'Custom sculptures of any shape — musical notes, Oscar statues, ice cream sodas, characters, and more!',
+    emoji: '🎨',
+  },
+  {
+    name: 'Balloon Tunnels & Walls',
+    description: 'Create immersive experiences with balloon tunnels and stunning balloon walls for photo backdrops.',
+    emoji: '🚇',
+  },
+  {
+    name: 'Balloon Drops & Releases',
+    description: 'Dramatic balloon drops from the ceiling for countdowns and celebrations. Pure excitement!',
+    emoji: '🎊',
+  },
+  {
+    name: 'Balloon Letters & Numbers',
+    description: 'Spell out names, ages, or messages with our giant balloon letters — up to 7 feet tall!',
+    emoji: '🔤',
+  },
+  {
+    name: 'Complete Event Styling',
+    description: 'Let us handle all your balloon decor! We combine arches, columns, bouquets, and sculptures for a complete look.',
+    emoji: '🎉',
+  },
+];
+
+const gallery = [
+  { image: eventDecor1, caption: 'Complete Event Balloon Styling' },
+  { image: eventDecor2, caption: 'Full Event Decor Package' },
+  { image: musicalNote, caption: 'Musical Note Balloon Sculpture' },
+  { image: iceCreamSculptures, caption: 'Ice Cream Soda Sculptures for Teachers' },
+  { image: aisdLetters, caption: 'AISD Leadership 7\' Balloon Letters' },
+  { image: eventDecor3, caption: 'Event Decor Setup' },
+  { image: eventDecor4, caption: 'Themed Event Decoration' },
+  { image: eventDecor5, caption: 'Custom Event Design' },
+  { image: eventDecor6, caption: 'Special Occasion Balloon Decor' },
+];
+---
+
+<BaseLayout
+  title="Event Decor Austin | Balloon Sculptures, Bouquets & Full Event Styling"
+  description="Complete balloon event decor in Austin TX. Custom sculptures, bouquets, tunnels, walls, drops, releases, and giant balloon letters. Best prices in Central Texas! Call 512-785-7253."
+  keywords="event decor Austin, balloon sculptures Austin, balloon bouquets, balloon tunnels, balloon walls, balloon drops, giant balloon letters Austin, party decor Austin TX"
+>
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <Image src={eventDecor1} alt="Event Balloon Decor" width={1400} quality="mid" />
+      <div class="page-hero-overlay"></div>
+    </div>
+    <div class="container page-hero-content">
+      <span class="page-hero-eyebrow">🎉 Complete Event Solutions</span>
+      <h1>Event <span class="text-gradient-warm">Decor</span></h1>
+      <p>The perfect decor combo — arches, columns, tunnels, bouquets, sculptures and more!</p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">What We Offer</span>
+        <h2 class="section-title">Beyond <span class="text-gradient">Ordinary</span></h2>
+        <p class="section-subtitle">From intimate bouquets to 7-foot balloon letters — we do it all!</p>
+      </div>
+      
+      <div class="decor-grid">
+        {decorServices.map((service, index) => (
+          <div class={`decor-card card reveal reveal-delay-${(index % 4) + 1}`}>
+            <span class="decor-emoji">{service.emoji}</span>
+            <h3>{service.name}</h3>
+            <p>{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Portfolio</span>
+        <h2 class="section-title">Event Decor <span class="text-gradient">Gallery</span></h2>
+      </div>
+      
+      <div class="page-gallery">
+        {gallery.map((item, index) => (
+          <div class={`gallery-card reveal reveal-delay-${(index % 4) + 1}`}>
+            <div class="gallery-card-img">
+              <Image 
+                src={item.image} 
+                alt={item.caption} 
+                width={500} 
+                quality="mid"
+                data-lightbox={item.image.src}
+                data-caption={item.caption}
+              />
+            </div>
+            <div class="gallery-card-info">
+              <p>{item.caption}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark section page-cta">
+    <div class="container text-center reveal">
+      <div class="cta-hot">🔥 The Hottest Event Decor in Austin 🔥</div>
+      <h2>Let Us Transform Your Event!</h2>
+      <p>Call or email for the best prices in Central Texas. From concept to setup, we handle everything.</p>
+      <div class="page-cta-buttons">
+        <a href="tel:5127857253" class="btn btn-primary btn-large">📞 Call 512-785-7253</a>
+        <a href="mailto:BalloonHutAustin@Gmail.com" class="btn btn-accent btn-large">✉️ Email Us</a>
+        <a href="/contact/" class="btn btn-secondary btn-large">📋 Request a Quote</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative; min-height: 50vh; display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .page-hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+  .page-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .page-hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(26, 14, 62, 0.7) 0%, rgba(45, 27, 105, 0.85) 100%); }
+  .page-hero-content { position: relative; z-index: 1; text-align: center; padding: 8rem 0 4rem; }
+  .page-hero-eyebrow { display: inline-block; font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--color-accent); margin-bottom: var(--spacing-sm); }
+  .page-hero-content h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); color: var(--color-white); margin-bottom: var(--spacing-xs); }
+  .page-hero-content p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.8); max-width: 550px; margin: 0 auto; }
+
+  /* Decor Grid */
+  .decor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+  }
+  
+  .decor-card {
+    padding: var(--spacing-lg);
+    text-align: center;
+  }
+  
+  .decor-emoji {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    transition: transform var(--transition-bounce);
+  }
+  
+  .decor-card:hover .decor-emoji {
+    transform: scale(1.2) rotate(15deg);
+  }
+  
+  .decor-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+  .decor-card p { font-size: 0.95rem; color: var(--color-text-light); }
+  
+  /* Gallery */
+  .page-gallery {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-md);
+  }
+  
+  .gallery-card {
+    border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: all var(--transition-smooth); background: var(--color-white);
+  }
+  .gallery-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .gallery-card-img { position: relative; aspect-ratio: 4/3; overflow: hidden; cursor: pointer; }
+  .gallery-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .gallery-card:hover .gallery-card-img img { transform: scale(1.08); }
+  .gallery-card-info { padding: var(--spacing-sm) var(--spacing-md); }
+  .gallery-card-info p { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 500; color: var(--color-text); }
+  
+  /* CTA */
+  .cta-hot {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+    animation: wiggle 2s ease-in-out infinite;
+  }
+  
+  .page-cta h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--color-white); margin-bottom: var(--spacing-sm); }
+  .page-cta p { font-size: 1.1rem; color: rgba(255,255,255,0.75); max-width: 550px; margin: 0 auto var(--spacing-lg); }
+  .page-cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  
+  @media (max-width: 900px) {
+    .decor-grid { grid-template-columns: repeat(2, 1fr); }
+    .page-gallery { grid-template-columns: repeat(2, 1fr); }
+  }
+  
+  @media (max-width: 600px) {
+    .decor-grid { grid-template-columns: 1fr; }
+    .page-gallery { grid-template-columns: 1fr; }
+    .page-cta-buttons { flex-direction: column; align-items: center; }
+  }
+</style>

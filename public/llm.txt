@@ -1,0 +1,75 @@
+# Balloon Hut Austin
+
+> Custom balloon arches, columns, towers, sculptures and event decor for all occasions in Austin and Central Texas.
+
+## Identity
+
+- **Business Name**: Balloon Hut Austin
+- **Type**: Local balloon decoration and event decor service
+- **Location**: Austin, Texas (serving all of Central Texas)
+- **Phone**: 512-785-7253
+- **Email**: BalloonHutAustin@Gmail.com
+- **Website**: https://www.balloonhutaustin.com
+- **Tagline**: "If You Can Dream It, We Can Do It!"
+- **Specialty**: Custom balloon arrangements, design, delivery, and setup for special events
+
+## Services
+
+### Balloon Arches
+- Organic Arches (most popular - flowing, natural look with mixed balloon sizes)
+- Traditional Arches (clean, uniform patterns for formal events)
+- Spiral Arches (dynamic twisted patterns)
+- Framed Arches (built on frames for indoor/outdoor versatility)
+
+### Balloon Columns
+- Classic Columns (uniform stacks in event colors)
+- Themed Columns (Minions, Frozen, sports teams, character-inspired)
+- Bent & Curved Columns (whimsical, organic feel)
+- Flower Top Columns (elegant, wedding-ready)
+
+### Balloon Sculptures
+- Musical Note Sculptures
+- Ice Cream Soda Sculptures
+- Oscar/Award Statues
+- Giant Balloon Letters (up to 7 feet tall)
+- Custom character and themed sculptures
+
+### Event Decor
+- Balloon Bouquets (centerpieces, gifts, table decor)
+- Balloon Tunnels (immersive walkway experiences)
+- Balloon Walls (photo backdrop installations)
+- Balloon Drops (ceiling releases for countdowns)
+- Balloon Releases (outdoor celebration moments)
+- Topiary Designs
+- Complete Event Styling Packages
+
+## Event Types Served
+- Weddings & Receptions
+- Birthday Parties
+- Corporate Events
+- Baby Showers & Bridal Showers
+- Graduations
+- Quinceañeras
+- Holiday Parties
+- School Events (AISD and other districts)
+
+## Value Proposition
+- Best prices in Central Texas
+- Custom designs for every event and theme
+- Full-service: design, delivery, setup, and takedown
+- Serving Austin and the greater Central Texas area
+- "If You Can Dream It, We Can Do It!"
+
+## Site Map
+- / (Homepage - full portfolio showcase)
+- /balloon-arches/ (Arch styles and gallery)
+- /balloon-columns/ (Column styles and gallery)
+- /event-decor/ (Full event decor services and gallery)
+- /contact/ (Quote request form)
+
+## Notable Projects
+- AISD Leadership 7' Balloon Letters
+- Red and Charline McCombs honor event (5 balloon sculptures)
+- Oscar Red Carpet balloon sculptures
+- SoCo Bridal Shower organic arch installations
+- Numerous wedding and corporate event styling

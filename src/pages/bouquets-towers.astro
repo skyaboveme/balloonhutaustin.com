@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+import eventDecor1 from '../assets/images/event-decor-1.jpg';
+import eventDecor2 from '../assets/images/event-decor-2.jpg';
+import eventDecor3 from '../assets/images/event-decor-3.jpg';
+import columnsFlower from '../assets/images/columns-flower.jpg';
+import columnsAquaSilver from '../assets/images/columns-aqua-silver.jpg';
+import archPrettyPink from '../assets/images/arch-pretty-pink.jpg';
+
+const bouquetTypes = [
+  {
+    name: 'Helium Bouquets',
+    description: 'Classic helium-filled balloon bouquets in your event colors. The perfect table centerpiece or gift for any celebration.',
+    emoji: '🎈',
+  },
+  {
+    name: 'Balloon Towers',
+    description: 'Impressive floor-standing towers that add vertical drama without helium. Great for entryways, stage edges, and photo areas.',
+    emoji: '🗼',
+  },
+  {
+    name: 'Table Centerpieces',
+    description: 'Elegant balloon-based centerpieces that replace traditional flowers at a fraction of the cost — and double the wow factor.',
+    emoji: '🌺',
+  },
+  {
+    name: 'Gift Bouquets',
+    description: 'Surprise someone special with a custom balloon bouquet delivered right to their door. Great for birthdays, get-wells, and congratulations.',
+    emoji: '🎁',
+  },
+  {
+    name: 'Themed Towers',
+    description: 'Character-topped towers, sports team towers, or color-themed stacks that tie perfectly into your party theme.',
+    emoji: '🎭',
+  },
+  {
+    name: 'Topiary Designs',
+    description: 'Sculpted balloon topiaries that add a touch of sophistication — perfect for weddings, galas, and upscale events.',
+    emoji: '🌳',
+  },
+];
+
+const gallery = [
+  { image: columnsFlower, caption: 'Pink, Turquoise, Lime Flower Bouquet Tower' },
+  { image: eventDecor1, caption: 'Elegant Bouquet and Tower Arrangements' },
+  { image: columnsAquaSilver, caption: 'Aqua and Silver Balloon Tower' },
+  { image: eventDecor2, caption: 'Full Event Bouquet Setup' },
+  { image: archPrettyPink, caption: 'Pink Balloon Bouquet Arrangement' },
+  { image: eventDecor3, caption: 'Themed Table Centerpiece Bouquets' },
+];
+---
+
+<BaseLayout
+  title="Balloon Bouquets & Towers Austin | Custom Centerpieces & Gift Bouquets"
+  description="Beautiful balloon bouquets and towers in Austin TX. Custom helium bouquets, table centerpieces, gift deliveries, and themed towers for every occasion. Call 512-785-7253!"
+  keywords="balloon bouquets Austin, balloon towers Austin, balloon centerpieces, balloon gifts Austin TX, helium bouquets, balloon delivery Austin, party bouquets"
+>
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <Image src={columnsFlower} alt="Balloon Bouquets and Towers" width={1400} quality="mid" />
+      <div class="page-hero-overlay"></div>
+    </div>
+    <div class="container page-hero-content">
+      <span class="page-hero-eyebrow">💐 Beautiful Arrangements</span>
+      <h1>Bouquets & <span class="text-gradient-warm">Towers</span></h1>
+      <p>Stunning balloon bouquets and floor-standing towers that elevate any event</p>
+    </div>
+  </section>
+
+  <!-- Types -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Our Styles</span>
+        <h2 class="section-title">Bouquet & Tower <span class="text-gradient">Options</span></h2>
+        <p class="section-subtitle">From simple centerpieces to towering floor displays — the perfect finishing touch for your event</p>
+      </div>
+
+      <div class="types-grid">
+        {bouquetTypes.map((type, index) => (
+          <div class={`type-card card reveal reveal-delay-${(index % 4) + 1}`}>
+            <span class="type-emoji">{type.emoji}</span>
+            <h3>{type.name}</h3>
+            <p>{type.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Section -->
+  <section class="section-dark section why-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow" style="color: var(--color-accent);">💡 Why Choose Balloons?</span>
+        <h2 class="section-title" style="color: var(--color-white);">Better Than <span class="text-gradient-warm">Flowers</span></h2>
+      </div>
+      <div class="why-grid reveal">
+        <div class="why-card">
+          <span class="why-icon">💰</span>
+          <h3>More Affordable</h3>
+          <p>Beautiful balloon centerpieces cost a fraction of traditional flower arrangements</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">⏰</span>
+          <h3>Longer Lasting</h3>
+          <p>Balloon bouquets stay beautiful for 3-5 days — much longer than cut flowers</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">🎨</span>
+          <h3>Fully Customizable</h3>
+          <p>Any color, any theme, any style — we match your exact vision every time</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">🤩</span>
+          <h3>Wow Factor</h3>
+          <p>Balloon towers and bouquets create a fun, festive energy that flowers simply can't match</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Portfolio</span>
+        <h2 class="section-title">Bouquet & Tower <span class="text-gradient">Gallery</span></h2>
+      </div>
+
+      <div class="page-gallery">
+        {gallery.map((item, index) => (
+          <div class={`gallery-card reveal reveal-delay-${(index % 4) + 1}`}>
+            <div class="gallery-card-img">
+              <Image
+                src={item.image}
+                alt={item.caption}
+                width={500}
+                quality="mid"
+                data-lightbox={item.image.src}
+                data-caption={item.caption}
+              />
+            </div>
+            <div class="gallery-card-info">
+              <p>{item.caption}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark section page-cta">
+    <div class="container text-center reveal">
+      <h2>Need Bouquets or Towers? 💐</h2>
+      <p>Perfect for weddings, birthdays, corporate events, and gifts. Call for the best prices in Central Texas!</p>
+      <div class="page-cta-buttons">
+        <a href="tel:5127857253" class="btn btn-primary btn-large">📞 Call 512-785-7253</a>
+        <a href="mailto:BalloonHutAustin@Gmail.com" class="btn btn-accent btn-large">✉️ Email Us</a>
+        <a href="/contact/" class="btn btn-secondary btn-large">📋 Get a Quote</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { position: relative; min-height: 50vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .page-hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+  .page-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .page-hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(26, 14, 62, 0.7) 0%, rgba(45, 27, 105, 0.85) 100%); }
+  .page-hero-content { position: relative; z-index: 1; text-align: center; padding: 8rem 0 4rem; }
+  .page-hero-eyebrow { display: inline-block; font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--color-accent); margin-bottom: var(--spacing-sm); }
+  .page-hero-content h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); color: var(--color-white); margin-bottom: var(--spacing-xs); }
+  .page-hero-content p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.8); max-width: 550px; margin: 0 auto; }
+
+  .types-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-md); }
+  .type-card { padding: var(--spacing-lg); text-align: center; }
+  .type-emoji { font-size: 3rem; display: block; margin-bottom: var(--spacing-sm); transition: transform var(--transition-bounce); }
+  .type-card:hover .type-emoji { transform: scale(1.2) rotate(15deg); }
+  .type-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+  .type-card p { font-size: 0.95rem; color: var(--color-text-light); }
+
+  /* Why Section */
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-md); }
+  .why-card { text-align: center; padding: var(--spacing-md); }
+  .why-icon { font-size: 2.5rem; display: block; margin-bottom: var(--spacing-xs); }
+  .why-card h3 { font-size: 1.1rem; color: var(--color-accent); margin-bottom: 0.4rem; }
+  .why-card p { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+
+  .page-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-md); }
+  .gallery-card { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: all var(--transition-smooth); background: var(--color-white); }
+  .gallery-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .gallery-card-img { position: relative; aspect-ratio: 4/3; overflow: hidden; cursor: pointer; }
+  .gallery-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .gallery-card:hover .gallery-card-img img { transform: scale(1.08); }
+  .gallery-card-info { padding: var(--spacing-sm) var(--spacing-md); }
+  .gallery-card-info p { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 500; color: var(--color-text); }
+
+  .page-cta { padding: var(--spacing-2xl) 0; }
+  .page-cta h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--color-white); margin-bottom: var(--spacing-sm); }
+  .page-cta p { font-size: 1.1rem; color: rgba(255,255,255,0.75); max-width: 550px; margin: 0 auto var(--spacing-lg); }
+  .page-cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+
+  @media (max-width: 900px) {
+    .types-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .page-gallery { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .types-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .page-gallery { grid-template-columns: 1fr; }
+    .page-cta-buttons { flex-direction: column; align-items: center; }
+  }
+</style>

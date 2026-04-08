@@ -1,0 +1,331 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+import bridalShower from '../assets/images/bridal-shower-pink-arch.jpg';
+import peachRose from '../assets/images/peach-rose-arch.jpg';
+import butterfliesArch from '../assets/images/butterflies-flowers-arch.jpg';
+import mutedPurples from '../assets/images/muted-purples-arch.jpg';
+import archSoco from '../assets/images/arch-soco-bridal.jpg';
+import archRainbow from '../assets/images/arch-rainbow.jpg';
+import archPrettyPink from '../assets/images/arch-pretty-pink.jpg';
+import archExtra1 from '../assets/images/arch-extra-1.jpg';
+import archExtra2 from '../assets/images/arch-extra-2.jpg';
+
+const archTypes = [
+  {
+    name: 'Organic Arches',
+    description: 'Our most popular style! Organic arches feature a beautiful mix of balloon sizes and colors for a natural, flowing look. Perfect for photo backdrops, entryways, and party focal points.',
+    emoji: '🌸',
+  },
+  {
+    name: 'Traditional Arches',
+    description: 'Classic balloon arches with clean, uniform patterns. Great for corporate events, graduations, and formal celebrations that need a polished touch.',
+    emoji: '🎓',
+  },
+  {
+    name: 'Spiral Arches',
+    description: 'Eye-catching spiral patterns create a sense of movement and energy. These arches add a dynamic flair to any event and are real crowd-pleasers.',
+    emoji: '🌀',
+  },
+  {
+    name: 'Framed Arches',
+    description: 'Built on a frame for stability and versatility, these arches can be placed anywhere — indoors or outdoors. Ideal for walkways and photo ops.',
+    emoji: '🖼️',
+  },
+];
+
+const gallery = [
+  { image: bridalShower, caption: 'Bridal Shower with Pink Organic Balloon Arch and Live Flowers' },
+  { image: peachRose, caption: 'Peach, Rose, Pinks and Vanillas for This Organic Balloon Arch' },
+  { image: butterfliesArch, caption: 'Butterflies And Flowers Make this Organic Arch' },
+  { image: mutedPurples, caption: 'Organic Arch Design With Muted Purples, Pinks and Greens' },
+  { image: archSoco, caption: 'SoCo Bridal Shower Organic Arch' },
+  { image: archRainbow, caption: 'Rainbow, Clouds and Pot of Gold Balloon Arch' },
+  { image: archPrettyPink, caption: 'Pretty and Pink Organic Balloon Arch' },
+  { image: archExtra1, caption: 'Custom Balloon Arch Design' },
+  { image: archExtra2, caption: 'Elegant Arch Installation' },
+];
+---
+
+<BaseLayout
+  title="Balloon Arches Austin | Custom Organic & Traditional Arch Designs"
+  description="Stunning custom balloon arches for every event in Austin TX. Organic, spiral, traditional, and framed arches for weddings, birthdays, corporate events. Call 512-785-7253!"
+  keywords="balloon arches Austin, organic balloon arch, wedding balloon arch, party balloon arch Austin TX, custom arch designs, balloon arch delivery Austin"
+>
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <Image src={bridalShower} alt="Beautiful Balloon Arch" width={1400} quality="mid" />
+      <div class="page-hero-overlay"></div>
+    </div>
+    <div class="container page-hero-content">
+      <span class="page-hero-eyebrow">🌈 Our Signature Service</span>
+      <h1>Balloon <span class="text-gradient-warm">Arches</span></h1>
+      <p>Frame your celebration with stunning custom balloon arches for any occasion</p>
+    </div>
+  </section>
+
+  <!-- Arch Types -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Arch Styles</span>
+        <h2 class="section-title">Choose Your <span class="text-gradient">Style</span></h2>
+        <p class="section-subtitle">From organic flowing designs to structured classics — we create the perfect arch for your vision</p>
+      </div>
+      
+      <div class="types-grid">
+        {archTypes.map((type, index) => (
+          <div class={`type-card card reveal reveal-delay-${index + 1}`}>
+            <span class="type-emoji">{type.emoji}</span>
+            <h3>{type.name}</h3>
+            <p>{type.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Our Work</span>
+        <h2 class="section-title">Arch <span class="text-gradient">Gallery</span></h2>
+      </div>
+      
+      <div class="page-gallery">
+        {gallery.map((item, index) => (
+          <div class={`gallery-card reveal reveal-delay-${(index % 4) + 1}`}>
+            <div class="gallery-card-img">
+              <Image 
+                src={item.image} 
+                alt={item.caption} 
+                width={500} 
+                quality="mid"
+                data-lightbox={item.image.src}
+                data-caption={item.caption}
+              />
+            </div>
+            <div class="gallery-card-info">
+              <p>{item.caption}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark section page-cta">
+    <div class="container text-center reveal">
+      <h2>Love What You See?</h2>
+      <p>Let's create the perfect balloon arch for your event. Contact us for a free quote!</p>
+      <div class="page-cta-buttons">
+        <a href="tel:5127857253" class="btn btn-primary btn-large">📞 Call 512-785-7253</a>
+        <a href="/contact/" class="btn btn-secondary btn-large">📋 Get a Quote</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Page Hero */
+  .page-hero {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .page-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .page-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .page-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(26, 14, 62, 0.7) 0%, rgba(45, 27, 105, 0.85) 100%);
+  }
+  
+  .page-hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 8rem 0 4rem;
+  }
+  
+  .page-hero-eyebrow {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .page-hero-content h1 {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .page-hero-content p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 550px;
+    margin: 0 auto;
+  }
+  
+  /* Types Grid */
+  .types-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+  }
+  
+  .type-card {
+    padding: var(--spacing-lg);
+    text-align: center;
+  }
+  
+  .type-emoji {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    transition: transform var(--transition-bounce);
+  }
+  
+  .type-card:hover .type-emoji {
+    transform: scale(1.2) rotate(15deg);
+  }
+  
+  .type-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+  
+  .type-card p {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+  }
+  
+  /* Page Gallery */
+  .page-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+  }
+  
+  .gallery-card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-smooth);
+    background: var(--color-white);
+  }
+  
+  .gallery-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .gallery-card-img {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .gallery-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .gallery-card:hover .gallery-card-img img {
+    transform: scale(1.08);
+  }
+  
+  .gallery-card-info {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .gallery-card-info p {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+  
+  /* Page CTA */
+  .page-cta {
+    text-align: center;
+  }
+  
+  .page-cta h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .page-cta p {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: var(--spacing-lg);
+     max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .page-cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 900px) {
+    .types-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .page-gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .types-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .page-gallery {
+      grid-template-columns: 1fr;
+    }
+    
+    .page-cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

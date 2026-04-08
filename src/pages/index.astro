@@ -1,0 +1,847 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+// Hero & Gallery images
+import bridalShower from '../assets/images/bridal-shower-pink-arch.jpg';
+import peachRose from '../assets/images/peach-rose-arch.jpg';
+import musicalNote from '../assets/images/musical-note-sculpture.jpg';
+import butterfliesArch from '../assets/images/butterflies-flowers-arch.jpg';
+import iceCreamSculptures from '../assets/images/ice-cream-soda-sculptures.jpg';
+import aisdLetters from '../assets/images/aisd-balloon-letters.jpg';
+import mutedPurples from '../assets/images/muted-purples-arch.jpg';
+import eventDecor1 from '../assets/images/event-decor-1.jpg';
+import eventDecor2 from '../assets/images/event-decor-2.jpg';
+import archRainbow from '../assets/images/arch-rainbow.jpg';
+import archPrettyPink from '../assets/images/arch-pretty-pink.jpg';
+import columnsFlower from '../assets/images/columns-flower.jpg';
+import columnsBentPurple from '../assets/images/columns-bent-purple.jpg';
+
+const services = [
+  {
+    title: 'Balloon Arches',
+    description: 'Organic, spiral, and traditional arches that frame your celebration with color and joy.',
+    emoji: '🌈',
+    href: '/balloon-arches/',
+    image: bridalShower,
+  },
+  {
+    title: 'Balloon Columns',
+    description: 'Standing tall and proud — themed columns that anchor your event with personality.',
+    emoji: '🏛️',
+    href: '/balloon-columns/',
+    image: columnsFlower,
+  },
+  {
+    title: 'Balloon Sculptures',
+    description: 'Musical notes, ice cream sodas, Oscar statues — if you can imagine it, we make it.',
+    emoji: '🎨',
+    href: '/event-decor/',
+    image: musicalNote,
+  },
+  {
+    title: 'Event Decor',
+    description: 'Complete event styling with bouquets, tunnels, walls, drops, and more.',
+    emoji: '🎉',
+    href: '/event-decor/',
+    image: eventDecor1,
+  },
+];
+
+const galleryItems = [
+  { image: bridalShower, caption: 'Bridal Shower with Pink Organic Balloon Arch and Live Flowers' },
+  { image: peachRose, caption: 'Peach, Rose, Pinks and Vanillas for This Organic Balloon Arch' },
+  { image: musicalNote, caption: 'Musical Note Balloon Sculpture' },
+  { image: butterfliesArch, caption: 'Butterflies And Flowers Make this Organic Arch' },
+  { image: iceCreamSculptures, caption: 'Ice Cream Soda Sculptures for Teachers' },
+  { image: aisdLetters, caption: 'AISD Leadership 7\' Balloon Letters' },
+  { image: mutedPurples, caption: 'Organic Arch Design With Muted Purples, Pinks and Greens' },
+  { image: archRainbow, caption: 'Rainbow, Clouds and Pot of Gold Balloon Arch' },
+  { image: archPrettyPink, caption: 'Pretty and Pink Organic Balloon Arch' },
+  { image: eventDecor2, caption: 'Stunning Event Decor Setup' },
+  { image: columnsBentPurple, caption: 'Purple and Turquoise Bent Columns' },
+  { image: columnsFlower, caption: 'Pink, Turquoise, Lime Flower Column' },
+];
+---
+
+<BaseLayout>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-shapes" aria-hidden="true">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+    
+    <div class="hero-confetti" aria-hidden="true">
+      {Array.from({ length: 20 }).map((_, i) => (
+        <span 
+          class="confetti-piece"
+          style={`--x: ${Math.random() * 100}%; --delay: ${Math.random() * 5}s; --duration: ${3 + Math.random() * 4}s; --color: ${['var(--color-primary)', 'var(--color-accent)', 'var(--color-pop-purple)', 'var(--color-pop-blue)', 'var(--color-coral)', 'var(--color-mint)'][Math.floor(Math.random() * 6)]};`}
+        ></span>
+      ))}
+    </div>
+    
+    <div class="container hero-content">
+      <div class="hero-badge reveal">
+        <span>🎈</span> Austin's Premier Balloon Artists <span>🎈</span>
+      </div>
+      
+      <h1 class="hero-title reveal reveal-delay-1">
+        <span class="hero-title-line">If You Can</span>
+        <span class="hero-title-line hero-title-accent">Dream It</span>
+        <span class="hero-title-line">We Can <span class="text-gradient-warm">Do It!</span></span>
+      </h1>
+      
+      <div class="hero-services reveal reveal-delay-2">
+        <span class="hero-pill">🌈 Arches</span>
+        <span class="hero-pill">🏛️ Columns</span>
+        <span class="hero-pill">🗼 Towers</span>
+        <span class="hero-pill">🎨 Sculptures</span>
+        <span class="hero-pill">💐 Bouquets</span>
+      </div>
+      
+      <p class="hero-subtitle reveal reveal-delay-3">
+        Custom balloon creations for weddings, birthdays, corporate events, and every special moment in Austin & Central Texas.
+      </p>
+      
+      <div class="hero-ctas reveal reveal-delay-4">
+        <a href="tel:5127857253" class="btn btn-primary btn-large">
+          📞 Call 512-785-7253
+        </a>
+        <a href="#gallery" class="btn btn-secondary btn-large">
+          ✨ View Our Work
+        </a>
+      </div>
+    </div>
+    
+    <!-- Decorative gallery preview -->
+    <div class="hero-gallery-preview" aria-hidden="true">
+      <div class="hero-preview-card hero-preview-1">
+        <Image src={bridalShower} alt="Bridal Shower Balloon Arch" width={300} quality="mid" />
+      </div>
+      <div class="hero-preview-card hero-preview-2">
+        <Image src={musicalNote} alt="Musical Note Sculpture" width={250} quality="mid" />
+      </div>
+      <div class="hero-preview-card hero-preview-3">
+        <Image src={mutedPurples} alt="Muted Purple Arch" width={280} quality="mid" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services section" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">What We Create</span>
+        <h2 class="section-title">Custom Balloon <span class="text-gradient">Magic</span></h2>
+        <p class="section-subtitle">From whimsical arches to towering sculptures — we bring your vision to life with balloons</p>
+      </div>
+      
+      <div class="services-grid">
+        {services.map((service, index) => (
+          <a href={service.href} class={`service-card card reveal reveal-delay-${index + 1}`}>
+            <div class="service-card-image">
+              <Image src={service.image} alt={service.title} width={400} quality="mid" />
+              <div class="service-card-overlay">
+                <span class="service-emoji">{service.emoji}</span>
+              </div>
+            </div>
+            <div class="service-card-content">
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <span class="service-link">
+                Explore {service.title} →
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="stats section-dark" id="stats">
+    <div class="container">
+      <div class="stats-grid reveal">
+        <div class="stat-card">
+          <span class="stat-number" data-target="1000" data-suffix="+">0</span>
+          <span class="stat-label">Events Decorated</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">⭐</span>
+          <span class="stat-text">Best Prices in Central Texas</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" data-target="100" data-suffix="%">0</span>
+          <span class="stat-label">Custom Designs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="gallery section" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Our Portfolio</span>
+        <h2 class="section-title">See Our <span class="text-gradient">Creations</span></h2>
+        <p class="section-subtitle">Every design is custom-made with love for your unique celebration</p>
+      </div>
+      
+      <div class="gallery-masonry">
+        {galleryItems.map((item, index) => (
+          <div class={`gallery-item reveal reveal-delay-${(index % 4) + 1}`}>
+            <Image 
+              src={item.image} 
+              alt={item.caption} 
+              width={600} 
+              quality="mid"
+              data-lightbox={item.image.src}
+              data-caption={item.caption}
+            />
+            <div class="gallery-item-overlay">
+              <span class="gallery-item-caption">{item.caption}</span>
+              <span class="gallery-item-zoom">🔍</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOT SECTION ============ -->
+  <section class="hot-section section-dark" id="hot">
+    <div class="container">
+      <div class="hot-content reveal">
+        <div class="hot-label">
+          <span>🔥</span> Hot! Hot! Hot! <span>🔥</span>
+        </div>
+        <h2>Organic Balloon Arches, Columns and Sculptures Are</h2>
+        <p class="hot-desc">The hottest trend in event decor! Our organic designs use varying sizes and colors for a natural, flowing look that will leave your guests speechless.</p>
+        <div class="hot-ctas">
+          <a href="tel:5127857253" class="btn btn-primary btn-large">
+            📞 Call for a Quote
+          </a>
+          <a href="mailto:BalloonHutAustin@Gmail.com" class="btn btn-secondary btn-large">
+            ✉️ Email Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA SECTION ============ -->
+  <section class="final-cta section" id="cta">
+    <div class="container">
+      <div class="cta-card reveal">
+        <div class="cta-balloons" aria-hidden="true">
+          <span style="--delay: 0s;">🎈</span>
+          <span style="--delay: 0.5s;">🎈</span>
+          <span style="--delay: 1s;">🎈</span>
+        </div>
+        <h2>Ready to Make Your Event <span class="text-gradient-warm">Unforgettable?</span></h2>
+        <p>Call or email for the best prices in Central Texas. We'd love to bring your balloon vision to life!</p>
+        <div class="cta-contacts">
+          <a href="tel:5127857253" class="btn btn-primary btn-large">
+            📞 512-785-7253
+          </a>
+          <a href="mailto:BalloonHutAustin@Gmail.com" class="btn btn-accent btn-large">
+            ✉️ Email Us
+          </a>
+          <a href="/contact/" class="btn btn-secondary btn-large" style="background: var(--color-deep-purple); border-color: var(--color-pop-purple);">
+            📋 Request a Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ========== HERO ========== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-dark);
+    overflow: hidden;
+    padding: 8rem 0 4rem;
+  }
+  
+  .hero-bg-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+  }
+  
+  .shape-1 {
+    width: 500px;
+    height: 500px;
+    background: var(--color-primary);
+    top: -10%;
+    right: -10%;
+    animation: floatSlow 8s ease-in-out infinite;
+  }
+  
+  .shape-2 {
+    width: 400px;
+    height: 400px;
+    background: var(--color-pop-purple);
+    bottom: -10%;
+    left: -10%;
+    animation: floatSlow 10s ease-in-out 2s infinite;
+  }
+  
+  .shape-3 {
+    width: 300px;
+    height: 300px;
+    background: var(--color-accent);
+    top: 40%;
+    left: 30%;
+    animation: floatSlow 12s ease-in-out 4s infinite;
+  }
+  
+  .shape-4 {
+    width: 200px;
+    height: 200px;
+    background: var(--color-pop-blue);
+    top: 20%;
+    right: 25%;
+    animation: floatSlow 9s ease-in-out 1s infinite;
+  }
+  
+  .shape-5 {
+    width: 250px;
+    height: 250px;
+    background: var(--color-mint);
+    bottom: 20%;
+    right: 10%;
+    animation: floatSlow 11s ease-in-out 3s infinite;
+  }
+  
+  .hero-confetti .confetti-piece {
+    position: absolute;
+    top: -20px;
+    left: var(--x);
+    width: 8px;
+    height: 8px;
+    background: var(--color);
+    border-radius: 2px;
+    animation: confetti-fall var(--duration) linear var(--delay) infinite;
+    opacity: 0.6;
+  }
+  
+  .hero-confetti .confetti-piece:nth-child(even) {
+    width: 4px;
+    height: 12px;
+    border-radius: 4px;
+  }
+  
+  .hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.1;
+  }
+  
+  .hero-title-line {
+    display: block;
+  }
+  
+  .hero-title-accent {
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    background: var(--gradient-warm);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 4px 30px rgba(255, 107, 157, 0.4));
+  }
+  
+  .hero-services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .hero-pill {
+    padding: 0.5rem 1.25rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-full);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+    transition: all var(--transition-fast);
+  }
+  
+  .hero-pill:hover {
+    background: rgba(255, 107, 157, 0.2);
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 650px;
+    margin: 0 auto var(--spacing-lg);
+  }
+  
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  /* Hero Gallery Preview */
+  .hero-gallery-preview {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .hero-preview-card {
+    position: absolute;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    opacity: 0.15;
+    transition: opacity 0.5s ease;
+  }
+  
+  .hero-preview-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .hero-preview-1 {
+    width: 200px;
+    height: 260px;
+    bottom: 15%;
+    left: 5%;
+    animation: float 6s ease-in-out infinite;
+    transform: rotate(-5deg);
+  }
+  
+  .hero-preview-2 {
+    width: 180px;
+    height: 220px;
+    top: 20%;
+    right: 5%;
+    animation: float 7s ease-in-out 1s infinite;
+    transform: rotate(5deg);
+  }
+  
+  .hero-preview-3 {
+    width: 160px;
+    height: 200px;
+    bottom: 25%;
+    right: 15%;
+    animation: float 8s ease-in-out 2s infinite;
+    transform: rotate(-3deg);
+  }
+  
+  /* ========== SERVICES ========== */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+  }
+  
+  .service-card {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .service-card-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+  }
+  
+  .service-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .service-card:hover .service-card-image img {
+    transform: scale(1.1);
+  }
+  
+  .service-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 40%, rgba(26, 14, 62, 0.7) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 1rem;
+  }
+  
+  .service-emoji {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+    transition: transform var(--transition-bounce);
+  }
+  
+  .service-card:hover .service-emoji {
+    transform: scale(1.3) rotate(10deg);
+  }
+  
+  .service-card-content {
+    padding: var(--spacing-md);
+  }
+  
+  .service-card-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+  
+  .service-card-content p {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+  }
+  
+  .service-link {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    transition: color var(--transition-fast);
+  }
+  
+  .service-card:hover .service-link {
+    color: var(--color-secondary);
+  }
+  
+  /* ========== STATS ========== */
+  .stats {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    text-align: center;
+  }
+  
+  .stat-card {
+    padding: var(--spacing-md);
+  }
+  
+  .stat-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: var(--gradient-warm);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-label {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .stat-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-text {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+  
+  /* ========== GALLERY ========== */
+  .gallery-masonry {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+  }
+  
+  .gallery-item {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 4/5;
+  }
+  
+  .gallery-item:nth-child(1) { grid-row: span 2; }
+  .gallery-item:nth-child(4) { grid-column: span 2; aspect-ratio: auto; }
+  .gallery-item:nth-child(8) { grid-row: span 2; }
+  
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .gallery-item:hover img {
+    transform: scale(1.08);
+  }
+  
+  .gallery-item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 1rem 1rem;
+    background: linear-gradient(transparent, rgba(26, 14, 62, 0.85));
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+  }
+  
+  .gallery-item:hover .gallery-item-overlay {
+    opacity: 1;
+  }
+  
+  .gallery-item-caption {
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 500;
+    flex: 1;
+  }
+  
+  .gallery-item-zoom {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+  }
+  
+  /* ========== HOT SECTION ========== */
+  .hot-section {
+    text-align: center;
+    position: relative;
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .hot-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+    animation: wiggle 2s ease-in-out infinite;
+  }
+  
+  .hot-content h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .hot-desc {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 650px;
+    margin: 0 auto var(--spacing-lg);
+  }
+  
+  .hot-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  /* ========== FINAL CTA ========== */
+  .final-cta {
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .cta-card {
+    background: var(--gradient-dark);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl) var(--spacing-xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .cta-balloons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .cta-balloons span {
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.15;
+    animation: floatSlow 5s ease-in-out var(--delay) infinite;
+  }
+  
+  .cta-balloons span:nth-child(1) { top: 10%; left: 10%; }
+  .cta-balloons span:nth-child(2) { bottom: 10%; right: 10%; }
+  .cta-balloons span:nth-child(3) { top: 50%; right: 20%; }
+  
+  .cta-card h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .cta-card p {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: var(--spacing-lg);
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .cta-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-masonry {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .gallery-item:nth-child(1) { grid-row: span 1; }
+    .gallery-item:nth-child(4) { grid-column: span 1; }
+    .gallery-item:nth-child(8) { grid-row: span 1; }
+  }
+  
+  @media (max-width: 768px) {
+    .hero {
+      padding: 7rem 0 3rem;
+      min-height: auto;
+    }
+    
+    .hero-preview-card {
+      display: none;
+    }
+    
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .service-card-image {
+      height: 200px;
+    }
+    
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+    
+    .gallery-masonry {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .cta-card {
+      padding: var(--spacing-xl) var(--spacing-md);
+    }
+    
+    .cta-contacts {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .hot-ctas {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .hero-ctas {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

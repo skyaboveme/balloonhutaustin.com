@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+import columnsAquaSilver from '../assets/images/columns-aqua-silver.jpg';
+import columnsHouseDivided from '../assets/images/columns-house-divided.jpg';
+import columnsFlower from '../assets/images/columns-flower.jpg';
+import columnsMinions from '../assets/images/columns-minions.jpg';
+import columnsBentPurple from '../assets/images/columns-bent-purple.jpg';
+
+const columnTypes = [
+  {
+    name: 'Classic Columns',
+    description: 'Tall, uniform stacks in your event colors. The timeless choice for entryways, stages, and dance floors.',
+    emoji: '🏛️',
+  },
+  {
+    name: 'Themed Columns',
+    description: 'Character-inspired columns featuring Minions, Frozen, sports teams, and more — perfect for kids\' parties and themed events!',
+    emoji: '🎭',
+  },
+  {
+    name: 'Bent & Curved Columns',
+    description: 'Add a playful twist with curved or bent columns that create an organic, whimsical look.',
+    emoji: '🌊',
+  },
+  {
+    name: 'Flower Top Columns',
+    description: 'Elegant columns crowned with beautiful balloon flower arrangements. Perfect for weddings and upscale events.',
+    emoji: '🌺',
+  },
+];
+
+const gallery = [
+  { image: columnsAquaSilver, caption: 'Aqua, Silver and White Columns' },
+  { image: columnsHouseDivided, caption: 'House Divided — UT and A&M' },
+  { image: columnsFlower, caption: 'Pink, Turquoise, Lime Flower Column' },
+  { image: columnsMinions, caption: 'Minions Balloon Columns' },
+  { image: columnsBentPurple, caption: 'Purple and Turquoise Bent Columns' },
+];
+---
+
+<BaseLayout
+  title="Balloon Columns Austin | Themed & Custom Column Designs"
+  description="Custom balloon columns for events in Austin TX. Classic, themed, bent, and flower-top columns for birthdays, weddings, corporate events. Call 512-785-7253!"
+  keywords="balloon columns Austin, themed balloon columns, party columns Austin TX, balloon towers Austin, custom balloon columns, event balloon decor"
+>
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <Image src={columnsFlower} alt="Balloon Columns" width={1400} quality="mid" />
+      <div class="page-hero-overlay"></div>
+    </div>
+    <div class="container page-hero-content">
+      <span class="page-hero-eyebrow">🏛️ Standing Tall & Beautiful</span>
+      <h1>Balloon <span class="text-gradient-warm">Columns</span></h1>
+      <p>Bold, themed, and custom column designs that anchor your event with personality</p>
+    </div>
+  </section>
+
+  <!-- Column Types -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Column Styles</span>
+        <h2 class="section-title">Pick Your <span class="text-gradient">Column</span></h2>
+        <p class="section-subtitle">From classic elegance to wild themed designs — columns that make a statement</p>
+      </div>
+      
+      <div class="types-grid">
+        {columnTypes.map((type, index) => (
+          <div class={`type-card card reveal reveal-delay-${index + 1}`}>
+            <span class="type-emoji">{type.emoji}</span>
+            <h3>{type.name}</h3>
+            <p>{type.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Our Work</span>
+        <h2 class="section-title">Column <span class="text-gradient">Gallery</span></h2>
+      </div>
+      
+      <div class="page-gallery">
+        {gallery.map((item, index) => (
+          <div class={`gallery-card reveal reveal-delay-${(index % 4) + 1}`}>
+            <div class="gallery-card-img">
+              <Image 
+                src={item.image} 
+                alt={item.caption} 
+                width={500} 
+                quality="mid"
+                data-lightbox={item.image.src}
+                data-caption={item.caption}
+              />
+            </div>
+            <div class="gallery-card-info">
+              <p>{item.caption}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark section page-cta">
+    <div class="container text-center reveal">
+      <h2>Columns That Stand Out!</h2>
+      <p>Let us design custom columns that perfectly match your event theme and colors.</p>
+      <div class="page-cta-buttons">
+        <a href="tel:5127857253" class="btn btn-primary btn-large">📞 Call 512-785-7253</a>
+        <a href="/contact/" class="btn btn-secondary btn-large">📋 Get a Quote</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .page-hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+  }
+  
+  .page-hero-bg img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  
+  .page-hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(26, 14, 62, 0.7) 0%, rgba(45, 27, 105, 0.85) 100%);
+  }
+  
+  .page-hero-content {
+    position: relative; z-index: 1; text-align: center; padding: 8rem 0 4rem;
+  }
+  
+  .page-hero-eyebrow {
+    display: inline-block; font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--color-accent); margin-bottom: var(--spacing-sm);
+  }
+  
+  .page-hero-content h1 {
+    font-size: clamp(2.5rem, 7vw, 4.5rem); color: var(--color-white); margin-bottom: var(--spacing-xs);
+  }
+  
+  .page-hero-content p {
+    font-size: 1.2rem; color: rgba(255, 255, 255, 0.8); max-width: 550px; margin: 0 auto;
+  }
+  
+  .types-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-md);
+  }
+  
+  .type-card { padding: var(--spacing-lg); text-align: center; }
+  .type-emoji { font-size: 3rem; display: block; margin-bottom: var(--spacing-sm); transition: transform var(--transition-bounce); }
+  .type-card:hover .type-emoji { transform: scale(1.2) rotate(15deg); }
+  .type-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+  .type-card p { font-size: 0.95rem; color: var(--color-text-light); }
+  
+  .page-gallery {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-md);
+  }
+  
+  .gallery-card {
+    border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: all var(--transition-smooth); background: var(--color-white);
+  }
+  .gallery-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  
+  .gallery-card-img { position: relative; aspect-ratio: 4/3; overflow: hidden; cursor: pointer; }
+  .gallery-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .gallery-card:hover .gallery-card-img img { transform: scale(1.08); }
+  
+  .gallery-card-info { padding: var(--spacing-sm) var(--spacing-md); }
+  .gallery-card-info p { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 500; color: var(--color-text); }
+  
+  .page-cta h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--color-white); margin-bottom: var(--spacing-sm); }
+  .page-cta p { font-size: 1.1rem; color: rgba(255,255,255,0.75); max-width: 500px; margin: 0 auto var(--spacing-lg); }
+  .page-cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  
+  @media (max-width: 900px) {
+    .types-grid { grid-template-columns: repeat(2, 1fr); }
+    .page-gallery { grid-template-columns: repeat(2, 1fr); }
+  }
+  
+  @media (max-width: 600px) {
+    .types-grid { grid-template-columns: 1fr; }
+    .page-gallery { grid-template-columns: 1fr; }
+    .page-cta-buttons { flex-direction: column; align-items: center; }
+  }
+</style>

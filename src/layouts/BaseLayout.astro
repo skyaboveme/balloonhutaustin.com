@@ -1,0 +1,813 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  schema?: object;
+  keywords?: string;
+}
+
+const {
+  title = "Balloon Hut Austin | Custom Balloon Arches, Columns & Sculptures",
+  description = "Balloon Hut Austin creates stunning custom balloon arches, columns, towers, sculptures and event decor for all occasions. Serving Austin and Central Texas. Call 512-785-7253!",
+  image = "/og-image.jpg",
+  schema,
+  keywords = "balloon arches Austin, balloon columns Austin, balloon sculptures, event decor Austin, party decorations Austin TX, balloon artist Austin, organic balloon arch, custom balloon designs"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL(image, Astro.site).toString();
+
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Balloon Hut Austin",
+  "description": "Custom balloon arches, columns, towers, sculptures and event decor for all occasions in Austin and Central Texas.",
+  "telephone": "+1-512-785-7253",
+  "email": "BalloonHutAustin@Gmail.com",
+  "url": "https://www.balloonhutaustin.com",
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 30.2672,
+      "longitude": -97.7431
+    },
+    "geoRadius": "80000"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Austin",
+    "addressRegion": "TX",
+    "addressCountry": "US"
+  },
+  "priceRange": "$$",
+  "image": socialImageURL,
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Balloon Decoration Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Balloon Arches" }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Balloon Columns" }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Balloon Sculptures" }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Event Decor" }
+      }
+    ]
+  }
+};
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/balloon-arches/', label: 'Arches' },
+  { href: '/balloon-columns/', label: 'Columns' },
+  { href: '/balloon-sculptures/', label: 'Sculptures' },
+  { href: '/bouquets-towers/', label: 'Bouquets' },
+  { href: '/balloon-tunnels-walls/', label: 'Tunnels' },
+  { href: '/drops-releases/', label: 'Drops' },
+  { href: '/event-decor/', label: 'Event Decor' },
+  { href: '/contact/', label: 'Contact' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content={keywords} />
+  <link rel="canonical" href={canonicalURL} />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={socialImageURL} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:site_name" content="Balloon Hut Austin" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={socialImageURL} />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(schema || defaultSchema)}></script>
+  
+  <ClientRouter />
+</head>
+<body>
+  <!-- Floating Balloon Particles Background -->
+  <div class="balloon-particles" aria-hidden="true">
+    <div class="particle" style="--delay: 0s; --x: 10%; --size: 20px; --color: var(--color-primary);"></div>
+    <div class="particle" style="--delay: 3s; --x: 25%; --size: 14px; --color: var(--color-accent);"></div>
+    <div class="particle" style="--delay: 6s; --x: 45%; --size: 18px; --color: var(--color-pop-purple);"></div>
+    <div class="particle" style="--delay: 9s; --x: 65%; --size: 12px; --color: var(--color-coral);"></div>
+    <div class="particle" style="--delay: 12s; --x: 80%; --size: 16px; --color: var(--color-mint);"></div>
+    <div class="particle" style="--delay: 2s; --x: 90%; --size: 22px; --color: var(--color-pop-blue);"></div>
+    <div class="particle" style="--delay: 7s; --x: 35%; --size: 10px; --color: var(--color-peach);"></div>
+    <div class="particle" style="--delay: 15s; --x: 55%; --size: 15px; --color: var(--color-primary);"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="Balloon Hut Austin Home">
+        <span class="logo-icon">🎈</span>
+        <span class="logo-text">
+          <span class="logo-main">Balloon Hut</span>
+          <span class="logo-sub">Austin</span>
+        </span>
+      </a>
+      
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          {navLinks.map(link => (
+            <li>
+              <a 
+                href={link.href} 
+                class={`nav-link ${currentPath === link.href ? 'active' : ''}`}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a href="tel:5127857253" class="nav-cta btn btn-primary">
+          📞 Call Now
+        </a>
+      </nav>
+      
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+
+  <!-- Main Content -->
+  <main>
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-balloons" aria-hidden="true">
+      <span class="footer-balloon" style="--delay: 0s; left: 5%;">🎈</span>
+      <span class="footer-balloon" style="--delay: 1s; left: 20%;">🎈</span>
+      <span class="footer-balloon" style="--delay: 2s; left: 50%;">🎈</span>
+      <span class="footer-balloon" style="--delay: 0.5s; left: 75%;">🎈</span>
+      <span class="footer-balloon" style="--delay: 1.5s; left: 92%;">🎈</span>
+    </div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon">🎈</span>
+            <span class="logo-text">
+              <span class="logo-main">Balloon Hut</span>
+              <span class="logo-sub">Austin</span>
+            </span>
+          </div>
+          <p class="footer-tagline">If You Can Dream It, We Can Do It!</p>
+          <p class="footer-desc">Custom balloon arches, columns, sculptures and event decor for every celebration in Austin and Central Texas.</p>
+        </div>
+        
+        <div class="footer-services">
+          <h3>Our Services</h3>
+          <ul>
+            <li><a href="/balloon-arches/">Balloon Arches</a></li>
+            <li><a href="/balloon-columns/">Balloon Columns</a></li>
+            <li><a href="/balloon-sculptures/">Balloon Sculptures</a></li>
+            <li><a href="/bouquets-towers/">Bouquets & Towers</a></li>
+            <li><a href="/balloon-tunnels-walls/">Tunnels & Walls</a></li>
+            <li><a href="/drops-releases/">Drops & Releases</a></li>
+            <li><a href="/event-decor/">Event Decor</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <ul>
+            <li>
+              <a href="tel:5127857253" class="footer-contact-link">
+                📞 <span>512-785-7253</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:BalloonHutAustin@Gmail.com" class="footer-contact-link">
+                ✉️ <span>BalloonHutAustin@Gmail.com</span>
+              </a>
+            </li>
+            <li class="footer-area">
+              📍 <span>Serving Austin & Central Texas</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; {new Date().getFullYear()} Balloon Hut Austin. All rights reserved.</p>
+        <a href="/llm.txt" class="footer-llm">AI Context</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Floating CTA -->
+  <a href="tel:5127857253" class="floating-cta" id="floating-cta" aria-label="Call Balloon Hut Austin">
+    <span class="floating-cta-icon">📞</span>
+    <span class="floating-cta-text">Call Now</span>
+  </a>
+
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" aria-label="Close lightbox">✕</button>
+    <img src="" alt="" id="lightbox-img" />
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script is:inline>
+    document.addEventListener('astro:page-load', () => {
+      // Hamburger Menu
+      const hamburger = document.getElementById('hamburger');
+      const nav = document.getElementById('main-nav');
+      const overlay = document.getElementById('mobile-overlay');
+      const header = document.getElementById('site-header');
+      
+      hamburger?.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        hamburger.classList.toggle('open');
+        overlay.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+      
+      overlay?.addEventListener('click', () => {
+        nav.classList.remove('open');
+        hamburger.classList.remove('open');
+        overlay.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+      
+      // Close menu on nav click
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('open');
+          hamburger.classList.remove('open');
+          overlay.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // Sticky Header
+      let lastScroll = 0;
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+        header?.classList.toggle('scrolled', currentScroll > 80);
+        
+        // Show/hide floating CTA
+        const floatingCta = document.getElementById('floating-cta');
+        if (floatingCta) {
+          floatingCta.classList.toggle('visible', currentScroll > 400);
+        }
+        lastScroll = currentScroll;
+      });
+      
+      // Scroll Reveal
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+      
+      // Lightbox
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      
+      document.querySelectorAll('[data-lightbox]').forEach(img => {
+        img.addEventListener('click', () => {
+          const src = img.getAttribute('data-lightbox') || img.src;
+          const caption = img.getAttribute('data-caption') || img.alt || '';
+          lightboxImg.src = src;
+          lightboxImg.alt = caption;
+          lightboxCaption.textContent = caption;
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+      
+      lightbox?.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+      
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox?.classList.contains('active')) {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+
+      // Animated Counter
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-target') || '0');
+            const suffix = el.getAttribute('data-suffix') || '';
+            const duration = 2000;
+            const startTime = performance.now();
+            
+            const update = (currentTime) => {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+              const current = Math.floor(easeProgress * target);
+              el.textContent = current.toLocaleString() + suffix;
+              
+              if (progress < 1) {
+                requestAnimationFrame(update);
+              } else {
+                el.textContent = target.toLocaleString() + suffix;
+              }
+            };
+            
+            requestAnimationFrame(update);
+            counterObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.3 });
+      
+      document.querySelectorAll('.stat-number').forEach(el => counterObserver.observe(el));
+    });
+  </script>
+</body>
+</html>
+
+<style>
+  /* ========== HEADER ========== */
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all var(--transition-smooth);
+    background: transparent;
+  }
+  
+  .site-header.scrolled {
+    background: rgba(255, 248, 240, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md);
+    padding: 0.6rem 0;
+  }
+  
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    z-index: 1001;
+  }
+  
+  .logo-icon {
+    font-size: 2rem;
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  
+  .logo-main {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+  
+  .logo-sub {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-pop-purple);
+    letter-spacing: 0.1em;
+  }
+  
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 0.25rem;
+  }
+  
+  .nav-link {
+    padding: 0.5rem 1rem;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+    position: relative;
+  }
+  
+  .nav-link:hover {
+    color: var(--color-primary);
+    background: rgba(255, 107, 157, 0.08);
+  }
+  
+  .nav-link.active {
+    color: var(--color-primary);
+    background: rgba(255, 107, 157, 0.12);
+  }
+  
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 3px;
+  }
+  
+  .nav-cta {
+    margin-left: 0.5rem;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    gap: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 4px;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--color-text);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+  
+  .hamburger.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background: var(--color-primary);
+  }
+  
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background: var(--color-primary);
+  }
+  
+  .mobile-overlay {
+    display: none;
+  }
+  
+  /* ========== FLOATING PARTICLES ========== */
+  .balloon-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  
+  .particle {
+    position: absolute;
+    bottom: -50px;
+    left: var(--x);
+    width: var(--size);
+    height: var(--size);
+    background: var(--color);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    opacity: 0.12;
+    animation: balloon-rise 18s linear var(--delay) infinite;
+  }
+  
+  /* ========== FOOTER ========== */
+  .site-footer {
+    background: var(--gradient-dark);
+    color: var(--color-white);
+    padding: var(--spacing-2xl) 0 var(--spacing-lg);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .footer-balloons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .footer-balloon {
+    position: absolute;
+    bottom: 20%;
+    font-size: 2rem;
+    opacity: 0.15;
+    animation: floatSlow 6s ease-in-out var(--delay) infinite;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .footer-logo .logo-main {
+    color: var(--color-white);
+  }
+  
+  .footer-logo .logo-sub {
+    color: var(--color-accent);
+  }
+  
+  .footer-tagline {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+  }
+  
+  .footer-desc {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+  }
+  
+  .footer-services h3,
+  .footer-contact h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent);
+  }
+  
+  .footer-services ul,
+  .footer-contact ul {
+    list-style: none;
+  }
+  
+  .footer-services li,
+  .footer-contact li {
+    padding: 0.3rem 0;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+  }
+  
+  .footer-services a:hover,
+  .footer-contact a:hover {
+    color: var(--color-primary);
+  }
+  
+  .footer-contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.7);
+    transition: color var(--transition-fast);
+  }
+  
+  .footer-contact-link:hover {
+    color: var(--color-primary);
+  }
+  
+  .footer-area {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .footer-bottom p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem;
+  }
+  
+  .footer-llm {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.8rem;
+    transition: color var(--transition-fast);
+  }
+  
+  .footer-llm:hover {
+    color: var(--color-accent);
+  }
+  
+  /* ========== FLOATING CTA ========== */
+  .floating-cta {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.5rem;
+    background: var(--gradient-warm);
+    color: var(--color-white);
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: var(--shadow-lg);
+    z-index: 900;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all var(--transition-smooth);
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .floating-cta.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .floating-cta:hover {
+    transform: translateY(-3px) scale(1.05);
+  }
+  
+  .floating-cta-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) {
+    .hamburger {
+      display: flex;
+    }
+    
+    .main-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      background: var(--color-light);
+      flex-direction: column;
+      align-items: stretch;
+      padding: 6rem 2rem 2rem;
+      box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+      transition: right 0.4s ease;
+      z-index: 1000;
+    }
+    
+    .main-nav.open {
+      right: 0;
+    }
+    
+    .nav-list {
+      flex-direction: column;
+      gap: 0;
+    }
+    
+    .nav-link {
+      display: block;
+      padding: 1rem 1.25rem;
+      font-size: 1.1rem;
+      border-radius: var(--radius-md);
+    }
+    
+    .nav-cta {
+      margin: var(--spacing-md) 0 0 0;
+      text-align: center;
+    }
+    
+    .mobile-overlay {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 14, 62, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .mobile-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+    
+    .footer-bottom {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+    
+    .floating-cta-text {
+      display: none;
+    }
+    
+    .floating-cta {
+      padding: 1rem;
+      border-radius: 50%;
+    }
+    
+    .floating-cta-icon {
+      font-size: 1.5rem;
+    }
+  }
+</style>

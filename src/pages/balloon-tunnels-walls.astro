@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+import eventDecor1 from '../assets/images/event-decor-1.jpg';
+import eventDecor2 from '../assets/images/event-decor-2.jpg';
+import eventDecor4 from '../assets/images/event-decor-4.jpg';
+import eventDecor5 from '../assets/images/event-decor-5.jpg';
+import eventDecor6 from '../assets/images/event-decor-6.jpg';
+import archRainbow from '../assets/images/arch-rainbow.jpg';
+
+const services = [
+  {
+    name: 'Balloon Tunnels',
+    description: 'Walk through a magical tunnel of balloons! Our balloon tunnels create an immersive entrance experience your guests will never forget. Perfect for grand entrances, hallways, and VIP walkways.',
+    emoji: '🚇',
+    highlights: ['Grand event entrances', 'Hallway transformations', 'VIP walkways', 'Photo tunnel experiences'],
+  },
+  {
+    name: 'Balloon Walls',
+    description: 'Stunning balloon walls serve as the ultimate photo backdrop and room divider. From organic free-form walls to structured patterns, we create Instagram-worthy installations.',
+    emoji: '🧱',
+    highlights: ['Photo backdrops', 'Stage backgrounds', 'Room dividers', 'Brand activations'],
+  },
+];
+
+const wallStyles = [
+  {
+    name: 'Organic Balloon Wall',
+    description: 'Free-flowing, natural arrangements with mixed balloon sizes and colors. Our most popular style for weddings and showers.',
+    emoji: '🌸',
+  },
+  {
+    name: 'Full Coverage Wall',
+    description: 'Floor-to-ceiling balloon coverage for maximum impact. Transforms any blank wall into a show-stopping focal point.',
+    emoji: '🎆',
+  },
+  {
+    name: 'Half Wall / Partial',
+    description: 'Accent walls and partial installations that add a pop of balloon magic without full coverage. Budget-friendly and beautiful.',
+    emoji: '✨',
+  },
+  {
+    name: 'Branded Walls',
+    description: 'Custom walls featuring logos, company colors, or messaging. Perfect for corporate events, product launches, and trade shows.',
+    emoji: '🏢',
+  },
+];
+
+const gallery = [
+  { image: eventDecor1, caption: 'Immersive Balloon Tunnel Installation' },
+  { image: eventDecor2, caption: 'Full Balloon Wall Photo Backdrop' },
+  { image: eventDecor6, caption: 'Organic Balloon Wall Design' },
+  { image: archRainbow, caption: 'Colorful Balloon Tunnel Walkway' },
+  { image: eventDecor4, caption: 'Themed Balloon Wall' },
+  { image: eventDecor5, caption: 'Event Entrance Tunnel' },
+];
+---
+
+<BaseLayout
+  title="Balloon Tunnels & Walls Austin | Custom Photo Backdrops & Immersive Installations"
+  description="Custom balloon tunnels and walls in Austin TX. Immersive walkway tunnels, Instagram-worthy photo backdrop walls, and brand activation installations. Call 512-785-7253!"
+  keywords="balloon tunnels Austin, balloon walls Austin, balloon photo backdrop, balloon installation Austin TX, immersive balloon experience, balloon brand activation"
+>
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <Image src={eventDecor1} alt="Balloon Tunnels and Walls" width={1400} quality="mid" />
+      <div class="page-hero-overlay"></div>
+    </div>
+    <div class="container page-hero-content">
+      <span class="page-hero-eyebrow">🚇 Immersive Experiences</span>
+      <h1>Tunnels & <span class="text-gradient-warm">Walls</span></h1>
+      <p>Transform any space into an immersive balloon experience with tunnels and walls</p>
+    </div>
+  </section>
+
+  <!-- Main Services — Tunnels & Walls -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Our Installations</span>
+        <h2 class="section-title">Immersive Balloon <span class="text-gradient">Experiences</span></h2>
+        <p class="section-subtitle">Step inside the magic — tunnels and walls that create unforgettable moments</p>
+      </div>
+
+      <div class="two-col-services">
+        {services.map((service, index) => (
+          <div class={`service-feature card reveal reveal-delay-${index + 1}`}>
+            <span class="feature-emoji">{service.emoji}</span>
+            <h3>{service.name}</h3>
+            <p class="feature-desc">{service.description}</p>
+            <ul class="feature-highlights">
+              {service.highlights.map(h => (
+                <li>✓ {h}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Wall Styles -->
+  <section class="section-dark section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow" style="color: var(--color-accent);">Wall Styles</span>
+        <h2 class="section-title" style="color: var(--color-white);">Choose Your <span class="text-gradient-warm">Wall</span></h2>
+      </div>
+
+      <div class="wall-grid reveal">
+        {wallStyles.map((style, index) => (
+          <div class="wall-card">
+            <span class="wall-emoji">{style.emoji}</span>
+            <h3>{style.name}</h3>
+            <p>{style.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Portfolio</span>
+        <h2 class="section-title">Tunnel & Wall <span class="text-gradient">Gallery</span></h2>
+      </div>
+
+      <div class="page-gallery">
+        {gallery.map((item, index) => (
+          <div class={`gallery-card reveal reveal-delay-${(index % 4) + 1}`}>
+            <div class="gallery-card-img">
+              <Image
+                src={item.image}
+                alt={item.caption}
+                width={500}
+                quality="mid"
+                data-lightbox={item.image.src}
+                data-caption={item.caption}
+              />
+            </div>
+            <div class="gallery-card-info">
+              <p>{item.caption}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark section page-cta">
+    <div class="container text-center reveal">
+      <h2>Ready to Transform Your Space? 🚇</h2>
+      <p>Balloon tunnels and walls create the ultimate wow factor. Let's design yours!</p>
+      <div class="page-cta-buttons">
+        <a href="tel:5127857253" class="btn btn-primary btn-large">📞 Call 512-785-7253</a>
+        <a href="/contact/" class="btn btn-secondary btn-large">📋 Get a Quote</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { position: relative; min-height: 50vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .page-hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+  .page-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .page-hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(26, 14, 62, 0.7) 0%, rgba(45, 27, 105, 0.85) 100%); }
+  .page-hero-content { position: relative; z-index: 1; text-align: center; padding: 8rem 0 4rem; }
+  .page-hero-eyebrow { display: inline-block; font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--color-accent); margin-bottom: var(--spacing-sm); }
+  .page-hero-content h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); color: var(--color-white); margin-bottom: var(--spacing-xs); }
+  .page-hero-content p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.8); max-width: 550px; margin: 0 auto; }
+
+  /* Two Column Services */
+  .two-col-services { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spacing-lg); }
+  .service-feature { padding: var(--spacing-xl); }
+  .feature-emoji { font-size: 3.5rem; display: block; margin-bottom: var(--spacing-sm); }
+  .service-feature h3 { font-size: 1.5rem; margin-bottom: var(--spacing-xs); }
+  .feature-desc { font-size: 1rem; color: var(--color-text-light); margin-bottom: var(--spacing-md); line-height: 1.7; }
+  .feature-highlights { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+  .feature-highlights li { font-family: var(--font-heading); font-size: 0.9rem; font-weight: 500; color: var(--color-pop-purple); padding: 0.3rem 0; }
+
+  /* Wall Grid */
+  .wall-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-md); }
+  .wall-card { text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.05); border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.1); transition: all var(--transition-smooth); }
+  .wall-card:hover { background: rgba(255,255,255,0.1); border-color: var(--color-primary); transform: translateY(-4px); }
+  .wall-emoji { font-size: 2.5rem; display: block; margin-bottom: var(--spacing-xs); }
+  .wall-card h3 { font-size: 1.1rem; color: var(--color-accent); margin-bottom: 0.4rem; }
+  .wall-card p { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+
+  .page-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-md); }
+  .gallery-card { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: all var(--transition-smooth); background: var(--color-white); }
+  .gallery-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .gallery-card-img { position: relative; aspect-ratio: 4/3; overflow: hidden; cursor: pointer; }
+  .gallery-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .gallery-card:hover .gallery-card-img img { transform: scale(1.08); }
+  .gallery-card-info { padding: var(--spacing-sm) var(--spacing-md); }
+  .gallery-card-info p { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 500; color: var(--color-text); }
+
+  .page-cta { padding: var(--spacing-2xl) 0; }
+  .page-cta h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--color-white); margin-bottom: var(--spacing-sm); }
+  .page-cta p { font-size: 1.1rem; color: rgba(255,255,255,0.75); max-width: 500px; margin: 0 auto var(--spacing-lg); }
+  .page-cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+
+  @media (max-width: 900px) {
+    .two-col-services { grid-template-columns: 1fr; }
+    .wall-grid { grid-template-columns: repeat(2, 1fr); }
+    .page-gallery { grid-template-columns: repeat(2, 1fr); }
+    .feature-highlights { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .wall-grid { grid-template-columns: 1fr; }
+    .page-gallery { grid-template-columns: 1fr; }
+    .page-cta-buttons { flex-direction: column; align-items: center; }
+  }
+</style>
