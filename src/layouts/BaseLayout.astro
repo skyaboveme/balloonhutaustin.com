@@ -457,7 +457,7 @@ const navLinks = [
     font-family: var(--font-heading);
     font-weight: 500;
     font-size: 0.95rem;
-    color: var(--color-text);
+    color: rgba(255, 255, 255, 0.95);
     border-radius: var(--radius-full);
     transition: all var(--transition-fast);
     position: relative;
@@ -485,6 +485,10 @@ const navLinks = [
     border-radius: 3px;
   }
   
+  .site-header.scrolled .nav-link {
+    color: var(--color-text);
+  }
+  
   .nav-cta {
     margin-left: 0.5rem;
     padding: 0.6rem 1.5rem;
@@ -510,9 +514,13 @@ const navLinks = [
     display: block;
     width: 100%;
     height: 3px;
-    background: var(--color-text);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 3px;
     transition: all 0.3s ease;
+  }
+  
+  .site-header.scrolled .hamburger span {
+    background: var(--color-text);
   }
   
   .hamburger.open span:nth-child(1) {
@@ -759,6 +767,7 @@ const navLinks = [
       padding: 1rem 1.25rem;
       font-size: 1.1rem;
       border-radius: var(--radius-md);
+      color: var(--color-text);
     }
     
     .nav-cta {
