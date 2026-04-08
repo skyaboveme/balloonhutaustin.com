@@ -74,11 +74,16 @@ const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/balloon-arches/', label: 'Arches' },
-  { href: '/balloon-columns/', label: 'Columns' },
-  { href: '/balloon-sculptures/', label: 'Sculptures' },
-  { href: '/bouquets-towers/', label: 'Bouquets' },
-  { href: '/drops-releases/', label: 'Drops' },
+  { 
+    label: 'Balloon Designs',
+    submenu: [
+      { href: '/balloon-arches/', label: 'Arches' },
+      { href: '/balloon-columns/', label: 'Columns' },
+      { href: '/balloon-sculptures/', label: 'Sculptures' },
+      { href: '/bouquets-towers/', label: 'Bouquets' },
+      { href: '/drops-releases/', label: 'Drops' },
+    ]
+  },
   { href: '/event-decor/', label: 'Event Decor' },
   { href: '/size-color-guide/', label: 'Color Guide' },
   { href: '/contact/', label: 'Contact' },
@@ -146,13 +151,30 @@ const navLinks = [
       <nav class="main-nav" id="main-nav" aria-label="Main navigation">
         <ul class="nav-list">
           {navLinks.map(link => (
-            <li>
-              <a 
-                href={link.href} 
-                class={`nav-link ${currentPath === link.href ? 'active' : ''}`}
-              >
-                {link.label}
-              </a>
+            <li class={link.submenu ? 'has-dropdown' : ''}>
+              {link.href ? (
+                <a 
+                  href={link.href} 
+                  class={`nav-link ${currentPath === link.href ? 'active' : ''}`}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                  {link.label} <span class="dropdown-arrow">▼</span>
+                </button>
+              )}
+              {link.submenu && (
+                <ul class="dropdown-menu">
+                  {link.submenu.map(sublink => (
+                    <li>
+                      <a href={sublink.href} class={`dropdown-link ${currentPath === sublink.href ? 'active' : ''}`}>
+                        {sublink.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
@@ -285,13 +307,23 @@ const navLinks = [
         document.body.style.overflow = '';
       });
       
-      // Close menu on nav click
-      document.querySelectorAll('.nav-link').forEach(link => {
+      // Close menu on nav click (only for actual links, not toggles)
+      document.querySelectorAll('a.nav-link, .dropdown-link').forEach(link => {
         link.addEventListener('click', () => {
           nav.classList.remove('open');
           hamburger.classList.remove('open');
           overlay.classList.remove('open');
           document.body.style.overflow = '';
+        });
+      });
+      
+      // Dropdown toggle logic for mobile and click-based interaction
+      document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          const parent = toggle.closest('.has-dropdown');
+          parent.classList.toggle('active-dropdown');
+          toggle.setAttribute('aria-expanded', parent.classList.contains('active-dropdown'));
         });
       });
 
@@ -500,6 +532,66 @@ const navLinks = [
     margin-left: 0.5rem;
     padding: 0.6rem 1.5rem;
     font-size: 0.9rem;
+  }
+  
+  /* ========== DROPDOWN STYLES ========== */
+  .has-dropdown {
+    position: relative;
+  }
+  
+  .dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  
+  .dropdown-arrow {
+    font-size: 0.65rem;
+    transition: transform var(--transition-fast);
+  }
+  
+  @media (min-width: 901px) {
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--color-white);
+      min-width: 200px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem 0;
+      list-style: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-fast);
+      z-index: 100;
+    }
+    
+    .has-dropdown:hover .dropdown-menu,
+    .has-dropdown:focus-within .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+  
+  .dropdown-link {
+    display: block;
+    padding: 0.7rem 1.5rem;
+    color: var(--color-text);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    transition: background var(--transition-fast), color var(--transition-fast);
+  }
+  
+  .dropdown-link:hover, .dropdown-link.active {
+    background: rgba(108, 92, 231, 0.05);
+    color: var(--color-primary);
   }
   
   /* Hamburger */
@@ -790,6 +882,34 @@ const navLinks = [
     .nav-cta {
       margin: var(--spacing-md) 0 0 0;
       text-align: center;
+    }
+    
+    /* Mobile Dropdown */
+    .dropdown-menu {
+      list-style: none;
+      position: static;
+      background: rgba(0,0,0,0.02);
+      border-radius: 0;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 1;
+      visibility: visible;
+      transition: max-height 0.3s ease;
+    }
+    
+    .has-dropdown.active-dropdown .dropdown-menu {
+      max-height: 500px; /* arbitrary height larger than content */
+      padding: 0.5rem 0;
+    }
+    
+    .dropdown-link {
+      padding: 0.7rem 2.5rem; /* Indent sub-links */
+      font-size: 1rem;
+    }
+    
+    .has-dropdown.active-dropdown .dropdown-arrow {
+      transform: rotate(180deg);
     }
     
     .mobile-overlay {
